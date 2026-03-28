@@ -3,67 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img src="logo.png" alt="True Control Logo" width="300">
-    <title>TrueControl | AVEVA MES & Ignition Løsninger</title>
+    <title>True Control | SCADA & MES Softwareudvikling</title>
     <style>
+        /* Grundlæggende design og farver */
+        :root {
+            --navy-blue: #0f2027; /* Dyb, moderne navy blå */
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --accent-blue: #205081;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #ffffff;
         }
+
+        h1, h2, h3 {
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Header med logo og firmanavn */
         header {
-            background: #004d99;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: var(--text-light);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        h1 { margin: 0; }
-        .content {
-            background: white;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        header img {
+            height: 50px; /* Tilpas højden på dit logo her */
+            margin-right: 20px;
         }
-        .footer {
+
+        header .company-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--navy-blue);
+            letter-spacing: 1px;
+        }
+
+        /* Navy blå Hero-boks */
+        .hero {
+            background-color: var(--navy-blue);
+            color: var(--text-light);
+            padding: 60px 10%;
             text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            margin-top: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            color: #d1d5db;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--navy-blue);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Sektioner generelt */
+        section {
+            padding: 60px 10%;
+        }
+
+        section.bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Mine Ydelser Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+        }
+
+        /* Arbejdsmetode liste */
+        .method-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .method-list li {
+            background: #ffffff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-left: 5px solid var(--accent-blue);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .method-list h3 {
+            margin-top: 0;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        /* Footer / Kontakt */
+        footer {
+            background-color: var(--navy-blue);
+            color: var(--text-light);
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        footer h2 {
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
             margin-top: 20px;
-            font-size: 0.9em;
-            color: #666;
+            line-height: 2;
+        }
+
+        /* Responsivt design til mobil */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            header { flex-direction: column; text-align: center; }
+            header img { margin-right: 0; margin-bottom: 10px; }
+            section { padding: 40px 5%; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>TrueControl</h1>
-        <p>Ekspertise i AVEVA MES, SCADA og Ignition</p>
+        <img src="logo.png" alt="True Control Logo" onerror="this.style.display='none'">
+        <div class="company-name">True Control</div>
     </header>
 
-    <div class="content">
-        <h2>Velkommen til TrueControl</h2>
-        <p>Mit navn er Brian True Vestergaard. Jeg tilbyder specialiseret konsulentbistand og udvikling inden for industriel automation og produktions-IT.</p>
-        
-        <h3>Mine kernekompetencer:</h3>
-        <ul>
-            <li><strong>AVEVA MES:</strong> Opsætning, Model Builder, afhjælpning af performance-flaskehalse (f.eks. cirkulære referencer) og databaseoptimering.</li>
-            <li><strong>SCADA Systemer:</strong> Design og implementering af driftssikre kontrolsystemer.</li>
-            <li><strong>Ignition:</strong> Udvikling af moderne, skalerbare og webbaserede automationsløsninger.</li>
-        </ul>
+    <section class="hero">
+        <div class="content-wrapper">
+            <h1>Få maskinerne og ledelsen til at tale samme sprog</h1>
+            <p>Sikker og smidig SCADA- og MES-programmering fra en software-specialist, der forstår hardwarens præmisser. Få en uafhængig arkitekt, der bygger digitale løsninger til den fysiske virkelighed.</p>
+            <a href="#kontakt" class="btn">Book en uforpligtende snak</a>
+        </div>
+    </section>
 
-        <h3>Kontakt</h3>
-        <p>Hjemmesiden er under opbygning, men du er velkommen til at række ud til mig for en uforpligtende snak om dit næste projekt.</p>
-        <p>Email: <a href="mailto:din.email@eksempel.dk">din.email@eksempel.dk</a></p>
-    </div>
+    <section id="om-mig">
+        <div class="content-wrapper">
+            <h2>Om mig</h2>
+            <p><strong>Softwareudvikler med dyb forståelse for el og elektronik.</strong><br>
+            Med 10 års erfaring i programmering og udvikling af AVEVA SCADA og MES, har jeg specialiseret mig i at bygge den software, der binder fabriksgulvet og forretningen sammen.</p>
 
-    <div class="footer">
-        &copy; 2026 TrueControl v/ Brian True Vestergaard.
-    </div>
+            <h3>En stærk softwarearkitektur kræver forståelse for fundamentet</h3>
+            <p>Min tekniske rejse startede som elektriker, før jeg læste til elektronikingeniør og derefter dedikerede mig fuldt ud til softwareudvikling. Det betyder, at jeg ikke bare skriver kode ud fra en specifikation – jeg forstår reelt de signaler og data, jeg arbejder med. Jeg ved, hvad der foregår nede i PLC'en, og jeg ved præcis, hvordan de rå data bedst oversættes til en stærk, skalerbar softwarearkitektur på topniveau.</p>
+
+            <h3>Sikkerhed og struktur fra Pharma-branchen</h3>
+            <p>Jeg har i en årrække arbejdet med udvikling til pharma-industrien. Det betyder, at kompromisløs kvalitet, sporbarhed og stabil oppetid er en integreret del af min kode. Jeg er vant til at udvikle i miljøer, hvor fejl ikke er en mulighed, og hvor softwaren skal kunne valideres (GAMP) fra dag ét.</p>
+
+            <h3>Hvorfor vælge True Control?</h3>
+            <p>Du får en dedikeret programmør og arkitekt, der forstår den fysiske virkelighed, koden skal fungere i. Jeg bygger logik, databaser og brugerflader, som skaber værdi for ledelsen, og som jeres operatører rent faktisk er glade for at bruge i hverdagen.</p>
+        </div>
+    </section>
+
+    <section id="ydelser" class="bg-light">
+        <div class="content-wrapper">
+            <h2>Mine Ydelser</h2>
+            <p>Fra rå maskindata til forretningsværdi. Som uafhængig software-specialist hjælper jeg med følgende kerneområder:</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>AVEVA SCADA & MES</h3>
+                    <p>Jeg designer og koder robuste AVEVA-løsninger. Fra de bagvedliggende databaser, scripts og arkitekturvalg til de brugervenlige HMI-skærme. Jeg bygger software, der performer stabilt, og som er nemt at vedligeholde og udvide.</p>
+                </div>
+                <div class="service-card">
+                    <h3>OEE & Dataintegration</h3>
+                    <p>Jeg udvikler den software, der trækker og behandler de rigtige data fra jeres PLC'er (uanset mærke) og omsætter dem til intelligente OEE-dashboards. Ledelsen får de faktuelle data præsenteret skarpt og fejlfrit.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Standardisering med PackML</h3>
+                    <p>Jeg koder og implementerer ISA-88 / PackML-standarden i jeres overordnede systemer. Det sikrer ensartede datastrukturer i jeres software, uanset hvem der har leveret den fysiske maskine.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Pharma & GAMP-validering</h3>
+                    <p>Jeg leverer kode, der er forberedt til GAMP-validering fra dag ét. Det inkluderer opsætning af audit trails, versionering, datasikkerhed og den nødvendige strukturelle dokumentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metode">
+        <div class="content-wrapper">
+            <h2>Sådan arbejder jeg</h2>
+            <p>For at sikre, at koden leverer præcis det, forretningen har brug for, bruger jeg en fast og gennemprøvet 5-trins projektmodel – uanset om vi udvider et eksisterende SCADA-system eller bygger en ny MES-løsning fra bunden:</p>
+
+            <ul class="method-list">
+                <li>
+                    <h3>1. Foranalyse & Kravspecifikation (Før jeg koder)</h3>
+                    <p>Jeg starter aldrig med at programmere, før arkitekturen er på plads. Vi afklarer jeres databehov, og I får en klar, skriftlig opgavebeskrivelse og et prisestimat.</p>
+                </li>
+                <li>
+                    <h3>2. Teknisk afklaring & Proof of Concept</h3>
+                    <p>Inden jeg bygger den fulde løsning, sikrer jeg mig, at datakommunikationen fungerer. Kan vi læse de rigtige tags fra PLC'en? Jeg tester de kritiske integrationer tidligt for at fjerne teknisk risiko.</p>
+                </li>
+                <li>
+                    <h3>3. Agil Udvikling & Iteration</h3>
+                    <p>Når retningen er sat, går jeg i gang med selve programmeringen. Jeg arbejder agilt og viser jer HMI-skærme og dashboards løbende, så vi lynhurtigt kan tilrette brugerfladen efter operatørernes feedback.</p>
+                </li>
+                <li>
+                    <h3>4. Test & Sikker Idriftsættelse (FAT/SAT)</h3>
+                    <p>Ny software må aldrig skabe utilsigtet nedetid. Jeg tester altid systemet grundigt i et isoleret miljø (FAT), og er med under idriftsættelsen (SAT), så vi sikrer en gnidningsfri overgang til drift.</p>
+                </li>
+                <li>
+                    <h3>5. Opfølgning (Gevinstrealisering)</h3>
+                    <p>Mit arbejde slutter ikke det sekund, koden er lagt live. Efter lidt tid evaluerer vi sammen for at sikre, at softwaren performer optimalt, og at systemet skaber den forventede værdi.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="kontakt">
+        <div class="content-wrapper">
+            <h2>Lad os optimere din produktion</h2>
+            <p>Står I foran en kompleks maskinintegration, eller trænger jeres SCADA-system til et løft?<br>Lad os tage en uforpligtende snak om systemarkitekturen og mulighederne.</p>
+            
+            <div class="contact-info">
+                <strong>Telefon:</strong> <a href="tel:+4500000000">+45 00 00 00 00</a><br>
+                <strong>Email:</strong> <a href="mailto:kontakt@truecontrol.dk">kontakt@truecontrol.dk</a><br>
+                <strong>LinkedIn:</strong> <a href="#" target="_blank">Min LinkedIn Profil</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
+

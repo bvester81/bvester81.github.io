@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Control | SCADA & MES Software Development</title>
+    <style>
+        /* Grundlæggende design og farver */
+        :root {
+            --navy-blue: #0f2027;
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --accent-blue: #205081;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3 {
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Header med logo, firmanavn og sprogvælger */
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: var(--text-light);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        header img {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        header .company-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--navy-blue);
+            letter-spacing: 1px;
+        }
+
+        /* Sprogvælger */
+        .lang-switch {
+            margin-left: auto;
+            font-size: 1.1rem;
+        }
+
+        .lang-switch a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* På den engelske side er EN lyseblå og DK er mørk */
+        .lang-dk { color: #0f2027; margin-right: 10px; transition: color 0.3s; }
+        .lang-dk:hover { color: #60a5fa; }
+        .lang-divider { color: #ccc; }
+        .lang-en { color: #60a5fa; margin-left: 10px; }
+
+        /* Navy blå Hero-boks */
+        .hero {
+            background-color: var(--navy-blue);
+            color: var(--text-light);
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            margin-top: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            color: #d1d5db;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--navy-blue);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Sektioner generelt */
+        section {
+            padding: 60px 10%;
+        }
+
+        section.bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Mine Ydelser Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+        }
+
+        /* Arbejdsmetode liste */
+        .method-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .method-list li {
+            background: #ffffff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-left: 5px solid var(--accent-blue);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .method-list h3 {
+            margin-top: 0;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        /* Footer / Kontakt */
+        footer {
+            background-color: var(--navy-blue);
+            color: var(--text-light);

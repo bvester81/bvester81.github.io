@@ -15,15 +15,17 @@
             --accent-dark: #205081;
         }
 
-        body {
+         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             color: var(--text-dark);
             background-color: #ffffff;
-            overflow-x: hidden; /* Forhindrer scroll når menuen er ude */
+            overflow-x: hidden; 
+            padding-top: 86px; /* NYT: Gør plads til den låste menu */
         }
+
 
         h1, h2, h3 {
             color: var(--navy-blue);
@@ -34,13 +36,20 @@
         header {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Skubber logo til venstre, menu til højre */
+            justify-content: space-between;
             padding: 15px 5%;
-            background-color: var(--text-light);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: relative;
+            background-color: rgba(255, 255, 255, 0.98); /* Gør den hvid, men liiiige præcis gennemsigtig nok til at man fornemmer teksten bagved */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Lidt kraftigere skygge når man scroller */
+            
+            /* NY KODE DER LÅSER MENUEN: */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
             z-index: 1000;
         }
+
 
         .header-right {
             display: flex;

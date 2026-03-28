@@ -49,6 +49,23 @@
             letter-spacing: 1px;
         }
 
+        /* Sprogvælger */
+        .lang-switch {
+            margin-left: auto;
+            font-size: 1.1rem;
+        }
+
+        .lang-switch a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* På den danske side er DK lyseblå og EN er mørk */
+        .lang-dk { color: #60a5fa; margin-right: 10px; }
+        .lang-divider { color: #ccc; }
+        .lang-en { color: #0f2027; margin-left: 10px; transition: color 0.3s; }
+        .lang-en:hover { color: #60a5fa; }
+
         /* Navy blå Hero-boks */
         .hero {
             background-color: var(--navy-blue);
@@ -173,19 +190,21 @@
             .hero h1 { font-size: 2rem; }
             header { flex-direction: column; text-align: center; }
             header img { margin-right: 0; margin-bottom: 10px; }
+            .lang-switch { margin-left: 0; margin-top: 15px; }
             section { padding: 40px 5%; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <img src="logo.png" alt="True Control Logo" onerror="this.style.display='none'">
         <div class="company-name">True Control</div>
         
-        <div class="lang-switch" style="margin-left: auto;">
-            <a href="index.html" style="text-decoration: none; font-weight: bold; margin-right: 10px; color: #0f2027;">DK</a>
-            <span style="color: #ccc;">|</span>
-            <a href="index_en.html" style="text-decoration: none; font-weight: bold; margin-left: 10px; color: #60a5fa;">EN</a>
+        <div class="lang-switch">
+            <a href="index.html" class="lang-dk">DK</a>
+            <span class="lang-divider">|</span>
+            <a href="index_en.html" class="lang-en">EN</a>
         </div>
     </header>
 
@@ -205,6 +224,9 @@
 
             <h3>En stærk softwarearkitektur kræver forståelse for fundamentet</h3>
             <p>Min tekniske rejse startede som elektriker, før jeg læste til elektronikingeniør og derefter dedikerede mig fuldt ud til softwareudvikling. Det betyder, at jeg ikke bare skriver kode ud fra en specifikation – jeg forstår reelt de signaler og data, jeg arbejder med. Jeg ved, hvad der foregår nede i PLC'en, og jeg ved præcis, hvordan de rå data bedst oversættes til en stærk, skalerbar softwarearkitektur på topniveau.</p>
+
+            <h3>Ekspert i maskinintegration, OEE og PackML</h3>
+            <p>Min store passion ligger i kodningen af intelligent maskinintegration. Jeg har udviklet løsninger til mange virksomheder, der skaber gennemsigtighed gennem præcise OEE-målinger. Derudover har jeg stor erfaring med at programmere og standardisere maskininterfaces ved hjælp af PackML, hvilket gør jeres fremtidige integrationer markant nemmere at håndtere i softwaren.</p>
 
             <h3>Sikkerhed og struktur fra Pharma-branchen</h3>
             <p>Jeg har i en årrække arbejdet med udvikling til pharma-industrien. Det betyder, at kompromisløs kvalitet, sporbarhed og stabil oppetid er en integreret del af min kode. Jeg er vant til at udvikle i miljøer, hvor fejl ikke er en mulighed, og hvor softwaren skal kunne valideres (GAMP) fra dag ét.</p>
@@ -235,6 +257,10 @@
                 <div class="service-card">
                     <h3>Pharma & GAMP-validering</h3>
                     <p>Jeg leverer kode, der er forberedt til GAMP-validering fra dag ét. Det inkluderer opsætning af audit trails, versionering, datasikkerhed og den nødvendige strukturelle dokumentation.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Systemarkitektur & Foranalyse</h3>
+                    <p>Inden I starter et stort udviklingsprojekt, kan jeg lave en systemanalyse. Jeg afdækker de tekniske faldgruber fra PLC-laget og op til databasen og ERP-systemet, og leverer en klar kravspecifikation, der minimerer risikoen.</p>
                 </div>
             </div>
         </div>
@@ -285,4 +311,3 @@
 
 </body>
 </html>
-

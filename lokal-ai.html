@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Control | Lokalt AI Review af Rapporter</title>
+    <style>
+        /* Grundlæggende design og farver (Samme som forsiden) */
+        :root {
+            --navy-blue: #0f2027;
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --accent-blue: #60a5fa;
+            --accent-dark: #205081;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 86px; /* Gør plads til den låste menu */
+        }
+
+        h1, h2, h3 { color: var(--navy-blue); margin-bottom: 15px; }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed; 
+            top: 0; left: 0; width: 100%; box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+
+        .lang-switch a { text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        .lang-dk { color: var(--accent-blue); }
+        .lang-divider { color: #ccc; margin: 0 5px; }
+        .lang-en { color: var(--navy-blue); transition: color 0.3s; }
+        .lang-en:hover { color: var(--accent-blue); }
+
+        .hamburger { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 5px; z-index: 1001; }
+        .hamburger span { display: block; width: 30px; height: 3px; background-color: var(--navy-blue); border-radius: 3px; transition: 0.3s ease-in-out; }
+        .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--text-light); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--text-light); }
+
+        .side-menu { position: fixed; top: 0; right: -350px; width: 300px; height: 100vh; background-color: var(--navy-blue); padding-top: 80px; transition: 0.4s ease-in-out; box-shadow: -5px 0 15px rgba(0,0,0,0.1); z-index: 999; overflow-y: auto; }
+        .side-menu.active { right: 0; }
+
+        .menu-list { list-style: none; padding: 0; margin: 0; }
+        .menu-list li { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; color: var(--text-light); text-decoration: none; font-size: 1.2rem; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        .menu-item:hover, .menu-item.open { background-color: rgba(255,255,255,0.05); color: var(--accent-blue); }
+
+        .sub-menu { list-style: none; padding: 0; margin: 0; background-color: #0a151a; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .sub-menu li { border-bottom: none; }
+        .sub-menu a { display: block; padding: 15px 30px 15px 50px; color: #d1d5db; text-decoration: none; font-size: 1.05rem; transition: 0.3s; }
+        .sub-menu a:hover { color: var(--accent-blue); }
+
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 998; }
+        .overlay.active { opacity: 1; visibility: visible; }
+
+        /* --- HERO & Sektioner --- */
+        .hero { background-color: var(--navy-blue); color: var(--text-light); padding: 60px 10%; text-align: center; }
+        .hero h1 { color: var(--text-light); font-size: 2.5rem; margin-top: 0; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto; color: #d1d5db; }
+        
+        .btn { display: inline-block; background-color: #ffffff; color: var(--navy-blue); padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; }
+        .btn:hover { background-color: #e2e8f0; }
+
+        section { padding: 60px 10%; }
+        section.bg-light { background-color: var(--light-bg); }
+        .content-wrapper { max-width: 900px; margin: 0 auto; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .service-card { background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-dark); }
+        .service-card h3 { font-size: 1.2rem; color: var(--accent-dark); }
+
+        .method-list { list-style-type: none; padding: 0; }
+        .method-list li { background: #ffffff; margin-bottom: 20px; padding: 20px; border-left: 5px solid var(--accent-dark); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .method-list h3 { margin-top: 0; color: var(--accent-dark); font-size: 1.2rem; }
+
+        footer { background-color: var(--navy-blue); color: var(--text-light); padding: 40px 10%; text-align: center; }
+        footer h2 { color: var(--text-light); }
+        footer a { color: var(--accent-blue); text-decoration: none; font-weight: bold; }
+        footer a:hover { text-decoration: underline; }
+        .contact-info { font-size: 1.1rem; margin-top: 20px; line-height: 2; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+            <img src="logo.svg" alt="True Control Logo" style="height: 60px;" onerror="this.style.display='none'">
+        </a>
+        
+        <div class="header-right">
+            <div class="lang-switch">
+                <a href="lokal-ai.html" class="lang-dk">DK</a>
+                <span class="lang-divider">|</span>
+                <a href="#" class="lang-en">EN</a> </div>
+            
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <ul class="menu-list">
+            <li><a href="index.html" class="menu-item nav-link">Gå til Forsiden</a></li>
+            <li>
+                <div class="menu-item open" id="expertiseToggle">
+                    Ekspertiser <span class="arrow" style="transform: rotate(180deg);">▼</span>
+                </div>
+                <ul class="sub-menu" id="expertiseSub" style="max-height: 200px;">
+                    <li><a href="lokal-ai.html" class="nav-link" style="color: var(--accent-blue);">AI review af håndskrift</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#kontakt" class="menu-item nav-link">Kontakt</a></li>
+        </ul>
+    </nav>
+    <div class="overlay" id="overlay"></div>
+
+    <section class="hero">
+        <div class="content-wrapper">
+            <h1 style="color: var(--accent-blue); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Edge AI & LLM</h1>
+            <h1>Automatiseret review af håndskrevne rapporter – 100% lokalt</h1>
+            <p>Få kraften fra store sprogmodeller (LLM) ud på fabriksgulvet uden at kompromittere datasikkerheden. Jeg bygger on-premise AI-løsninger på små, kraftfulde industri-pc'er, der automatisk læser og validerer håndskrevne logbøger og batch-rapporter.</p>
+            <a href="index.html#kontakt" class="btn">Skal vi drøfte mulighederne?</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-wrapper">
+            <h2>Det manuelle review er en flaskehals</h2>
+            <p>I mange produktions- og pharmavirksomheder foregår logning og udfyldelse af batch records stadig delvist på papir. Det kræver enormt meget tid at gennemgå disse håndskrevne rapporter manuelt for manglende signaturer, ulæselige tal eller afvigelser – og risikoen for menneskelige fejl er stor.</p>
+            
+            <p>Offentlige AI-værktøjer som ChatGPT er eminente til at læse og forstå skæv håndskrift, men <strong>industrielle produktionsdata må aldrig sendes ud i en public cloud.</strong></p>
+
+            <h3 style="margin-top: 40px; color: var(--accent-dark);">Løsningen: En sprogmodel direkte på maskinen</h3>
+            <p>Ved at placere en lille, specialkonfigureret industri-PC (Edge-computer) direkte ude på produktionslinjen, kan vi køre en tilpasset, lokal sprogmodel (Local LLM). Computeren scanner papiret, forstår teksten via AI, og sender de strukturerede data direkte ind i jeres lokale SCADA- eller MES-system.</p>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="content-wrapper">
+            <h2>Fordelene ved Edge AI & Lokale LLM'er</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>100% Datasikkerhed (Air-gapped)</h3>
+                    <p>Løsningen kræver ingen internetforbindelse. Modellen kører udelukkende på den lokale hardware, hvilket betyder, at jeres data aldrig forlader bygningens fire vægge. Det er essentielt for IP-beskyttelse og validering.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Forstår rodet håndskrift</h3>
+                    <p>I modsætning til traditionel OCR-software, der blot forsøger at genkende bogstaver, forstår en LLM <em>konteksten</em>. Den kan regne ud, hvad operatøren har skrevet, selvom håndskriften er utydelig, fordi den kender de forventede fagtermer.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Automatisk afvigelses-tjek</h3>
+                    <p>Modellen oversætter ikke bare teksten; den kan prompte til at vurdere den. Den kan automatisk markere et felt med rød, hvis en operatør har skrevet en værdi, der falder uden for den tilladte tolerance, eller hvis en signatur mangler.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Direkte SCADA/MES integration</h3>
+                    <p>Fordi jeg både forstår AI-modellerne og PLC/SCADA-arkitekturen, sørger jeg for, at outputtet fra pc'en bliver oversat til standardiserede data, som let kan læses af jeres eksisterende databaser og dashboards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-wrapper">
+            <h2>Sådan fungerer processen i praksis</h2>
+            <ul class="method-list">
+                <li>
+                    <h3>1. Scanning & Billedregistrering</h3>
+                    <p>Operatøren placerer den håndskrevne rapport under et industri-kamera eller en scanner ved linjen. Billedet fanges lokalt af Edge-pc'en.</p>
+                </li>
+                <li>
+                    <h3>2. AI Processing (Local LLM)</h3>
+                    <p>Den lokalt hostede AI-model analyserer billedet på få sekunder. Den trækker teksten ud, læser værdierne og overholder præcis den struktur (f.eks. JSON), vi har bedt den om via bagvedliggende system-prompts.</p>
+                </li>
+                <li>
+                    <h3>3. Validering via HMI-skærm</h3>
+                    <p>Resultatet vises på operatørens SCADA/HMI-skærm. Hvis AI'en er i tvivl om et specifikt tal, fremhæves det, så operatøren blot skal godkende eller rette det specifikke felt, før det gemmes.</p>
+                </li>
+                <li>
+                    <h3>4. Sikker lagring i MES</h3>
+                    <p>Når dataene er godkendt, skrives de direkte ned i jeres lokale database med fuldt Audit Trail og tidsstempel.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="kontakt">
+        <div class="content-wrapper">
+            <h2>Vil du se, hvordan lokal AI kan fungere for jer?</h2>
+            <p>Lad os tage en teknisk snak om hardwarekrav og muligheder for jeres dokumentation.</p>
+            <div class="contact-info">
+                <strong>Telefon:</strong> <a href="tel:+4500000000">+45 00 00 00 00</a><br>
+                <strong>Email:</strong> <a href="mailto:kontakt@truecontrol.dk">kontakt@truecontrol.dk</a><br>
+                <strong>LinkedIn:</strong> <a href="#" target="_blank">Min LinkedIn Profil</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+        const expertiseToggle = document.getElementById('expertiseToggle');
+        const expertiseSub = document.getElementById('expertiseSub');
+
+        function toggleMenu() {
+            hamburgerBtn.classList.toggle('active');
+            sideMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        expertiseToggle.addEventListener('click', function() {
+            this.classList.toggle('open');
+            if (expertiseSub.style.maxHeight) {
+                expertiseSub.style.maxHeight = null;
+                this.querySelector('.arrow').style.transform = 'rotate(0deg)';
+            } else {
+                expertiseSub.style.maxHeight = expertiseSub.scrollHeight + "px";
+                this.querySelector('.arrow').style.transform = 'rotate(180deg)';
+                this.querySelector('.arrow').style.transition = '0.3s';
+            }
+        });
+    </script>
+</body>
+</html>
+

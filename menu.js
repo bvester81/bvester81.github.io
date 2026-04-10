@@ -35,15 +35,16 @@ const headerHTML = `
                     <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
                 </ul>
             </li>
-
-            <li>
+            
                 <div class="menu-item" id="downloadsToggle">
                     Downloads <span class="arrow">▼</span>
                 </div>
                 <ul class="sub-menu" id="downloadsSub">
-                    <li><a href="download_logo.html" class="nav-link">Logo</a></li>
+                    <li><a href="download_logo.html" class="nav-link">Logo konverter</a></li>
+                    <li><a href="farver.html" class="nav-link">Farvepalette</a></li>
                 </ul>
             </li>
+
 
             <li><a href="index.html#kontakt" class="menu-item nav-link">Kontakt</a></li>
         </ul>

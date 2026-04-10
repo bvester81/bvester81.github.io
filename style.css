@@ -277,9 +277,75 @@ footer a {
 }
 footer a:hover { text-decoration: underline; }
 
+
 /* Styling af kontaktinformationen (tlf, mail osv.) */
 .contact-info { 
     font-size: 1.1rem; 
     margin-top: 20px; 
     line-height: 2; /* Giver godt med luft mellem linjerne for nem læsbarhed */
 }
+
+
+/* =========================================
+   HERO SEKTION & GENBRUGBAR LAYOUT
+========================================= */
+
+/* Hero (Top sektionen med farvet baggrund) */
+.hero { 
+    background-color: var(--navy-blue); 
+    color: var(--text-light); 
+    padding: 60px 10%; 
+    text-align: center; 
+}
+.hero h1 { 
+    color: var(--text-light); 
+    font-size: 2.5rem; 
+    margin-top: 0; 
+}
+.hero p { 
+    font-size: 1.2rem; 
+    max-width: 800px; 
+    margin: 0 auto 30px auto; 
+    color: #d1d5db; 
+}
+
+/* Grids (Kasserne til ydelser / fordele) */
+.services-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+    margin-top: 30px; 
+}
+.service-card { 
+    background: #ffffff; 
+    padding: 25px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    border-top: 4px solid var(--accent-dark); 
+}
+.service-card h3 { 
+    font-size: 1.2rem; 
+    color: var(--accent-dark); 
+}
+
+/* Lister (Trin-for-trin guider) */
+.method-list { 
+    list-style-type: none; 
+    padding: 0; 
+}
+.method-list li { 
+    background: #ffffff; 
+    margin-bottom: 20px; 
+    padding: 20px; 
+    border-left: 5px solid var(--accent-dark); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+.method-list h3 { 
+    margin-top: 0; 
+    color: var(--accent-dark); 
+    font-size: 1.2rem; 
+}
+
+
+
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Control | SVG til PNG Konverter</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .converter-box {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-top: 20px;
+        }
+        .input-group {
+            margin: 25px 0;
+        }
+        .input-group input {
+            padding: 10px;
+            width: 100px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--navy-blue);
+            font-weight: bold;
+        }
+        .download-btn {
+            background-color: var(--accent-blue);
+            color: var(--navy-blue);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .download-btn:hover {
+            background-color: var(--accent-dark);
+            color: var(--text-light);
+        }
+        /* Gør at SVG'en tilpasser sig små skærme */
+        #mySvg {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="content-wrapper">
+            <h1 style="color: var(--accent-blue); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Internt Værktøj</h1>
+            <h1>SVG til PNG Konverter</h1>
+            <p>Generer et True Control PNG-logo i præcis den pixel-opløsning, du har brug for. Indtast blot bredden, så klarer værktøjet resten.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-wrapper">
+            
+            <div class="converter-box">
+                <div id="svg-container">
+                    <svg id="mySvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 160" width="300" height="160">
+                        <rect x="20" y="20" width="50" height="12" fill="#0f2027" />
+                        <rect x="39" y="20" width="12" height="80" fill="#0f2027" />
+                        
+                        <rect x="90" y="20" width="12" height="80" fill="#0f2027" />
+                        <path d="M 90 26 L 120 26 A 14 14 0 0 1 120 54 L 90 54" fill="none" stroke="#0f2027" stroke-width="12" />
+                        <path d="M 112 52 L 134 98" fill="none" stroke="#0f2027" stroke-width="12" />
+                        
+                        <path d="M 166 20 L 166 75 A 19 19 0 0 0 204 75 L 204 20" fill="none" stroke="#0f2027" stroke-width="12" />
+                        
+                        <rect x="230" y="20" width="12" height="80" fill="#0f2027" />
+                        <rect x="230" y="20" width="40" height="12" fill="#0f2027" />
+                        <rect x="230" y="88" width="40" height="12" fill="#0f2027" />
+                        
+                        <rect x="230" y="54" width="24" height="12" fill="#60a5fa" />
+                        <circle cx="262" cy="60" r="10" fill="#60a5fa" />
+
+                        <text x="154" y="145" font-family="'Segoe UI', Helvetica, sans-serif" font-size="22" font-weight="bold" letter-spacing="14" fill="#0f2027" text-anchor="middle">CONTROL</text>
+                    </svg>
+                </div>
+
+                <div class="input-group">
+                    <label for="widthInput" style="font-weight: bold; color: var(--navy-blue); font-size: 1.1rem; display: block; margin-bottom: 10px;">Bredde (px): </label>
+                    <input type="number" id="widthInput" value="600">
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">Højden beregnes automatisk for at bevare formatet.</p>
+                </div>
+
+                <button onclick="downloadPNG()" class="download-btn">Download som PNG</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="kontakt">
+        <div class="content-wrapper">
+            <h2>Få maskinerne og ledelsen til at tale samme sprog</h2>
+            <p>Lad os tage en uforpligtende snak om systemarkitekturen og mulighederne i din produktion.</p>
+            
+            <div id="global-contact"></div>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+
+    <script>
+        function downloadPNG() {
+            const svg = document.getElementById('mySvg');
+            const widthInput = document.getElementById('widthInput');
+            
+            // Hent den ønskede bredde fra input feltet
+            const targetWidth = parseInt(widthInput.value) || 300;
+            
+            // Beregn højde baseret på SVG'ens viewBox (300x160)
+            const aspectRatio = 160 / 300;
+            const targetHeight = targetWidth * aspectRatio;
+
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+
+            // Sæt canvas til de nye dynamiske mål
+            canvas.width = targetWidth;
+            canvas.height = targetHeight;
+
+            img.onload = function() {
+                // Tegn billedet på canvas
+                ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+                
+                // Konverter til Blob (Den mest pålidelige metode på tværs af enheder)
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = url;
+                    // Filnavnet inkluderer nu den valgte størrelse automatisk
+                    downloadLink.download = `logo_${targetWidth}x${Math.round(targetHeight)}.png`;
+                    
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(downloadLink);
+                        URL.revokeObjectURL(url);
+                    }, 100);
+                }, 'image/png');
+            };
+
+            // Konverter SVG til base64
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+    </script>
+</body>
+</html>

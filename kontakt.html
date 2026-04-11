@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Control | Kontakt</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Specifik styling til kontaktsiden for at få billede og tekst til at stå pænt side om side */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+        .contact-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-image-wrapper {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+        .contact-image-wrapper img {
+            width: 100%;
+            max-width: 450px; /* Styrer hvor stort billedet maksimalt må blive */
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+        .contact-details-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent-blue);
+            margin-top: 30px;
+        }
+        .contact-details-box p {
+            margin: 12px 0;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        .contact-details-box strong {
+            color: var(--navy-blue);
+            display: inline-block;
+            width: 90px; /* Sikrer at teksten står pænt på linje */
+        }
+        .contact-details-box a {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-details-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="content-wrapper">
+            <h1 style="color: var(--accent-blue); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Lad os tage en snak</h1>
+            <h1>Kontakt True Control</h1>
+            <p>Du er altid velkommen til at ringe eller skrive, hvis du har brug for sparring på et SCADA- eller MES-projekt. Ingen opgave er for lille til en uforpligtende snak.</p>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="content-wrapper">
+            
+            <div class="contact-container">
+                <div class="contact-text">
+                    <h2 style="color: var(--navy-blue); margin-bottom: 15px;">Direkte kontakt, ingen mellemled</h2>
+                    <p>Når du ringer til True Control, taler du direkte med udvikleren. Det sikrer, at vi hurtigt kan spore os ind på kernen af jeres tekniske udfordring uden unødig udenomssnak.</p>
+                    
+                    <div class="contact-details-box">
+                        <p><strong>Telefon:</strong> <a href="tel:+4500000000">+45 00 00 00 00</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:kontakt@truecontrol.dk">kontakt@truecontrol.dk</a></p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                        <p><strong>Adresse:</strong> Irisvej 3, 7100 Vejle</p>
+                        <p><strong>CVR:</strong> 12345678</p>
+                    </div>
+                </div>
+
+                <div class="contact-image-wrapper">
+                    <img src="andreas_portraet.jpg" alt="Andreas, True Control" onerror="this.src='https://via.placeholder.com/450x550?text=Indsæt+billede+af+Andreas+her'">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="kontakt" style="padding: 40px 0; text-align: center; background-color: var(--navy-blue); color: #fff;">
+        <div class="content-wrapper">
+            <p style="margin: 0; opacity: 0.8;">&copy; 2024 True Control. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>

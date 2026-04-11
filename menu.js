@@ -32,8 +32,9 @@ const headerHTML = `
                     Ekspertiser <span class="arrow">▼</span>
                 </div>
                 <ul class="sub-menu" id="expertiseSub">
-                    <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
                     <li><a href="aveva_operations.html" class="nav-link">AVEVA Operations</a></li>
+                    <li><a href="oee_solutions.html" class="nav-link">OEE & Maskinintegration</a></li>
+                    <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
                 </ul>
             </li>
             <li>

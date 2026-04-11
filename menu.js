@@ -143,3 +143,8 @@ const contactHTML = `
     </div>
 `;
 
+//Finder pladsholderen og indsætter info
+const contactPlaceholder = document.getElementById('global-contact');
+if (contactPlaceholder) {
+    contactPlaceholder.innerHTML = contactHTML;
+}

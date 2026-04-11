@@ -51,8 +51,9 @@ const headerHTML = `
                     <li><a href="farver.html" class="nav-link">Farvepalette</a></li>
                 </ul>
             </li>
+            
+            <li><a href="kontakt.html" class="menu-item nav-link">Kontakt</a></li>
 
-            <li><a href="#kontakt" class="menu-item nav-link">Kontakt</a></li>
         </ul>
     </nav>
     
@@ -137,14 +138,8 @@ window.addEventListener('scroll', function() {
 // 3. GLOBAL FOOTER LOGIK
 // ==========================================
 const contactHTML = `
-    <div class="contact-info">
-        <strong>Telefon:</strong> <a href="tel:+4500000000">+45 00 00 00 00</a><br>
-        <strong>Email:</strong> <a href="mailto:kontakt@truecontrol.dk">kontakt@truecontrol.dk</a><br>
-        <strong>LinkedIn:</strong> <a href="#" target="_blank">Min LinkedIn Profil</a>
+    <div class="contact-info" style="margin-top: 20px;">
+        <a href="kontakt.html" class="btn" style="display: inline-block; margin-top: 10px;">Gå til kontaktsiden</a>
     </div>
 `;
 
-const contactPlaceholder = document.getElementById('global-contact');
-if (contactPlaceholder) {
-    contactPlaceholder.innerHTML = contactHTML;
-}

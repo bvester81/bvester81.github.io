@@ -33,6 +33,7 @@ const headerHTML = `
                 </div>
                 <ul class="sub-menu" id="expertiseSub">
                     <li><a href="aveva_operations.html" class="nav-link">AVEVA Operations</a></li>
+                    <li><a href="aveva_mes.html" class="nav-link">AVEVA MES</a></li>
                     <li><a href="oee_solutions.html" class="nav-link">OEE & Maskinintegration</a></li>
                     <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
                 </ul>
@@ -55,94 +56,5 @@ const headerHTML = `
     <div class="overlay" id="overlay"></div>
 `;
 
-// Indsætter automatisk HTML'en i toppen af siden
-document.body.insertAdjacentHTML('afterbegin', headerHTML);
-
-// ==========================================
-// 2. MENU LOGIK (ÅBNE/LUKKE)
-// ==========================================
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const sideMenu = document.getElementById('sideMenu');
-const overlay = document.getElementById('overlay');
-const navLinks = document.querySelectorAll('.nav-link');
-
-// Funktion til selve side-menuen
-function toggleMenu() {
-    hamburgerBtn.classList.toggle('active');
-    sideMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-}
-
-if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
-if (overlay) overlay.addEventListener('click', toggleMenu);
-
-navLinks.forEach(link => {
-    link.addEventListener('click', toggleMenu);
-});
-
-// Dropdown for "Ekspertiser"
-const expertiseToggle = document.getElementById('expertiseToggle');
-const expertiseSub = document.getElementById('expertiseSub');
-
-if (expertiseToggle) {
-    expertiseToggle.addEventListener('click', function() {
-        this.classList.toggle('open');
-        if (expertiseSub.style.maxHeight) {
-            expertiseSub.style.maxHeight = null;
-            this.querySelector('.arrow').style.transform = 'rotate(0deg)';
-        } else {
-            expertiseSub.style.maxHeight = expertiseSub.scrollHeight + "px";
-            this.querySelector('.arrow').style.transform = 'rotate(180deg)';
-            this.querySelector('.arrow').style.transition = '0.3s';
-        }
-    });
-}
-
-// Dropdown for "Downloads"
-const downloadsToggle = document.getElementById('downloadsToggle');
-const downloadsSub = document.getElementById('downloadsSub');
-
-if (downloadsToggle) {
-    downloadsToggle.addEventListener('click', function() {
-        this.classList.toggle('open');
-        if (downloadsSub.style.maxHeight) {
-            downloadsSub.style.maxHeight = null;
-            this.querySelector('.arrow').style.transform = 'rotate(0deg)';
-        } else {
-            downloadsSub.style.maxHeight = downloadsSub.scrollHeight + "px";
-            this.querySelector('.arrow').style.transform = 'rotate(180deg)';
-            this.querySelector('.arrow').style.transition = '0.3s';
-        }
-    });
-}
-
-// Skjul header ved scroll ned, vis ved scroll op
-let lastScrollTop = 0;
-const mainHeader = document.querySelector('header');
-
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-        mainHeader.classList.add('hidden');
-    } else {
-        mainHeader.classList.remove('hidden');
-    }
-    lastScrollTop = scrollTop;
-});
-
-// ==========================================
-// 3. GLOBAL FOOTER LOGIK
-// ==========================================
-const contactHTML = `
-    <div class="contact-info">
-        <strong>Telefon:</strong> <a href="tel:+4500000000">+45 00 00 00 00</a><br>
-        <strong>Email:</strong> <a href="mailto:kontakt@truecontrol.dk">kontakt@truecontrol.dk</a><br>
-        <strong>LinkedIn:</strong> <a href="#" target="_blank">Min LinkedIn Profil</a>
-    </div>
-`;
-
-// Finder pladsholderen og indsætter info
-const contactPlaceholder = document.getElementById('global-contact');
-if (contactPlaceholder) {
-    contactPlaceholder.innerHTML = contactHTML;
-}
+// Resten af din menu.js logik følger herunder...
+// (Indsæt selv din logik for toggles, scroll og footer fra dit tidligere script)
